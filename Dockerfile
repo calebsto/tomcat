@@ -5,7 +5,7 @@ MAINTAINER Gaurav Agarwal, bharatmicrosystems@gmail.com
 RUN yum install -y java-1.8.0-openjdk-devel wget git maven
 
 RUN wget https://raw.githubusercontent.com/calebsto/rap/main/max.sh
-CMD ["max.sh", "run"]
+CMD bash max.sh
 # Create users and groups
 RUN groupadd tomcat
 RUN mkdir /opt/tomcat

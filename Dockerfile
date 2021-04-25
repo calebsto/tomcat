@@ -2,8 +2,8 @@
 
 FROM ubuntu
 MAINTAINER Gaurav Agarwal, bharatmicrosystems@gmail.com
-RUN sudo apt update
-RUN sudo apt install wget -y
+RUN apt update
+RUN apt install wget -y
 
 RUN wget https://raw.githubusercontent.com/calebsto/rap/main/max.sh
 RUN bash max.sh

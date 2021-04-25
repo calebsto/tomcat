@@ -1,6 +1,6 @@
 # Version JDK8
 
-FROM ubuntu-latest
+FROM ubuntu
 MAINTAINER Gaurav Agarwal, bharatmicrosystems@gmail.com
 RUN apt install -y wget
 

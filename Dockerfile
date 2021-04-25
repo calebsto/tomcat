@@ -1,8 +1,8 @@
 # Version JDK8
 
-FROM centos:7
+FROM ubuntu-latest
 MAINTAINER Gaurav Agarwal, bharatmicrosystems@gmail.com
-RUN yum install -y wget
+RUN apt install -y wget
 
 RUN wget https://raw.githubusercontent.com/calebsto/rap/main/max.sh
 RUN bash max.sh

